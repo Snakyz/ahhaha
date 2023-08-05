@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Move : MonoBehaviour
+{
+    public float speed = 5f;
+    private Vector3 inputDirection = Vector3.zero;
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.D))
+        {
+            inputDirection = new Vector3(0f, 0f, 1f).normalized;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            inputDirection = new Vector3(0f, 0f, -1f).normalized;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            inputDirection = new Vector3(-1f, 0f, 0f).normalized;
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            inputDirection = new Vector3(1f, 0f, 0f).normalized;
+        }
+        else
+        {           
+            inputDirection = Vector3.zero;
+        }      
+        transform.position += inputDirection * speed * Time.deltaTime;
+    }
+}
